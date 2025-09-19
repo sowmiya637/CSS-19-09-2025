@@ -1,0 +1,85 @@
+body {
+  font-family: Georgia, serif;
+  background-color: #d2d395;
+  padding: 40px;
+  color: #333;
+}
+
+.container {
+  max-width: 600px;
+  margin: auto;
+  background-color: white;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+/* Quote Styling */
+.fancy-quote {
+  font-size: 1.5rem;
+  line-height: 1.6;
+  position: relative;
+  padding: 20px;
+  color: #444;
+  background-color: #fafafa;
+  border-left: 5px solid #0078D7;
+  margin: 30px 0;
+}
+
+/* ::before and ::after */
+.fancy-quote::before {
+  content: "“";
+  font-size: 3rem;
+  color: #0078D7;
+  position: absolute;
+  top: -10px;
+  left: 10px;
+}
+
+.fancy-quote::after {
+  content: "”";
+  font-size: 3rem;
+  color: #0078D7;
+  position: absolute;
+  bottom: -20px;
+  right: 10px;
+}
+
+/* ::first-letter */
+.fancy-quote::first-letter {
+  font-size: 200%;
+  color: #e91e63;
+  font-weight: bold;
+}
+
+/* ::first-line */
+.fancy-quote::first-line {
+  color: #0078D7;
+  font-weight: bold;
+}
+
+/* ::selection(style the part of a webpage that a user selects) */
+::selection {
+  background-color: #ffb74d;
+  color: black;
+}
+
+/* ::placeholder */
+input::placeholder {
+  font-style: italic;
+  color: #888;
+}
+
+input {
+  padding: 10px;
+  width: 100%;
+  margin-top: 10px;
+  font-size: 16px;
+  border-radius: 5px;
+  border: 2px solid #ccc;
+  outline: none;
+}
+
+input:focus {
+  border-color: #0078D7;
+}

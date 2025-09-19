@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>CSS At-rules</title>
+  
+  <!-- 1. @import -->
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
+  
+    /* 2. @font-face (Custom font fallback example) */
+    @font-face {
+      font-family: 'MyCustomFont';
+      src: url('https://fonts.gstatic.com/s/roboto/v30/KFOmCnqEu92Fr1Mu4mxP.ttf') format('truetype');
+      font-weight: normal;
+      font-style: normal;
+    }
+
+    /* 7. @layer to organize styles */
+    @layer reset, base, components;
+
+    @layer reset {
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        font-family: 'Poppins', 'MyCustomFont', sans-serif;
+        background: #a3aee5;
+      }
+    }
+
+    @layer base {
+      .container {
+        max-width: 400px;
+        margin: 40px auto;
+        padding: 20px;
+      }
+    }
+
+    /* 4. @keyframes for animation */
+    @keyframes fadeInScale {
+      from {
+        opacity: 0;
+        transform: scale(0.9);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    @layer components {
+      .card {
+        background: white;
+        padding: 30px;
+        border-radius: 12px;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        animation: fadeInScale 0.6s ease forwards;
+      }
+      .card:hover {
+        box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+      }
+      .card h2 {
+        color: #0078D7;
+        margin-bottom: 15px;
+      }
+      .card p {
+        color: #444;
+        line-height: 1.5;
+      }
+        .card h3 {
+        color: var(--primary-color);
+        margin-bottom: 10px;   /* Adds 10 pixels of space below */
+        font-size: 1.2rem;
+      }
+
+      .card ul {
+        list-style-type: disc;
+        margin-left: 20px;
+        color: #555;
+        margin-top: 10px;
+      }
+
+      .card ul li {
+        margin-bottom: 6px;
+      }
+
+      .card a {
+        color: var(--primary-color);
+        text-decoration: none;
+      }
+
+      .card a:hover {
+        text-decoration: underline;
+      }
+
+      form {
+        display: flex;
+        flex-direction: column;  /* child elements vertically */
+        gap: 10px;
+        margin-top: 10px;
+      }
+
+      input[type="email"] {
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 6px;
+        font-family: inherit;  /* matches the font style used elsewhere */
+      }
+
+      button[type="submit"] {
+        padding: 10px;
+        background-color: var(--primary-color);
+        color: white;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+        font-weight: 600;
+      }
+
+      button[type="submit"]:hover {
+        background-color: #005fa3;
+      }
+
+    }
+
+    /* 5. @supports to check if browser supports CSS variables */
+    @supports (--css: variables) {
+      :root {
+        --primary-color: #0078D7;
+        --bg-color: #ffffff;
+      }
+      .card {
+        border: 2px solid var(--primary-color);
+        background-color: var(--bg-color);
+      }
+    }
+
+    /* 3. @media for responsiveness */
+    @media (max-width: 480px) {
+      @layer base {
+        .container {
+           max-width: 90%;   /* Limits the width of the container to 90% of the screen  */
+          padding: 10px;
+        }
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="card">
+      <h2>Welcome to My Cafe</h2>
+      <p>Enjoy the best coffee in town with cozy ambiance and fresh pastries.</p>
+    </div>
+
+    <div class="card">
+      <h3>Our Specialties</h3>
+      <ul>
+        <li>Signature Espresso Blend</li>
+        <li>Homemade Croissants & Muffins</li>
+        <li>Seasonal Lattes (Pumpkin Spice, Vanilla Hazelnut)</li>
+        <li>Vegan & Gluten-Free Options</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h3>Opening Hours</h3>
+      <p>Monday - Friday: 7:00 AM - 7:00 PM</p>
+      <p>Saturday - Sunday: 8:00 AM - 6:00 PM</p>
+    </div>
+
+    <div class="card">
+      <h3>Visit Us</h3>
+      <p>122,north street,coimbatore.</p>
+      <p><strong>Phone:</strong> 1234567890</p>
+    </div>
+
+    <div class="card">
+      <h3>Stay Connected</h3>
+      <p>Follow us on:</p>
+      <ul>
+        <li><a href="#">Instagram</a></li>
+        <li><a href="#">Facebook</a></li>
+        <li><a href="#">Twitter</a></li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h3>Join Our Newsletter</h3>
+      <p>Subscribe to get the latest offers, events, and updates.</p>
+      <form>
+        <input type="email" placeholder="Enter your email" required>
+        <button type="submit">Subscribe</button>
+      </form>
+    </div>
+  </div>
+</body>
+</html>
